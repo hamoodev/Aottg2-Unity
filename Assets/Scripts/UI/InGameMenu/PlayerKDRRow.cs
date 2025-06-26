@@ -10,7 +10,7 @@ using GameManagers;
 using Utility;
 using ApplicationManagers;
 using CustomLogic;
-using Discord;
+// using Discord;
 
 namespace UI
 {

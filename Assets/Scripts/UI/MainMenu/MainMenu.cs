@@ -28,6 +28,7 @@ namespace UI
         public BasePopup _aboutPopup;
         public BasePopup _questPopup;
         public BasePopup _tutorialPopup;
+        public BasePopup _discordStartupPromptPopup;
         public OutdatedPopup _outdatedPopup;
         public MainBackgroundMenu _backgroundMenu;
         public TipPanel _tipPanel;
@@ -46,6 +47,13 @@ namespace UI
             SetupMainBackground();
             SetupIntroPanel();
             SetupLabels();
+            StartCoroutine(CheckDiscordStartupPrompt());
+        }
+
+        private IEnumerator CheckDiscordStartupPrompt()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _discordStartupPromptPopup.Show();
         }
 
         private void SetupMainBackground()
@@ -89,6 +97,7 @@ namespace UI
             _tutorialPopup = ElementFactory.CreateHeadedPanel<TutorialPopup>(transform).GetComponent<BasePopup>();
             _outdatedPopup = ElementFactory.CreateDefaultPopup<OutdatedPopup>(transform).GetComponent<OutdatedPopup>();
             _duelPopup = ElementFactory.CreateDefaultPopup<DuelPopup>(transform).GetComponent<DuelPopup>();
+            _discordStartupPromptPopup = ElementFactory.CreateDefaultPopup<DiscordStartupPromptPopup>(transform).GetComponent<DiscordStartupPromptPopup>();
             _popups.Add(_createGamePopup);
             _popups.Add(_multiplayerMapPopup);
             _popups.Add(_editProfilePopup);
@@ -103,6 +112,7 @@ namespace UI
             _popups.Add(_selectMapPopup);
             _popups.Add(_outdatedPopup);
             _popups.Add(_duelPopup);
+            _popups.Add(_discordStartupPromptPopup);
         }
 
         private RectTransform _introPanelRect;

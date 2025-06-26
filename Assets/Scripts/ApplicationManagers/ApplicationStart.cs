@@ -44,6 +44,7 @@ namespace ApplicationManagers
             Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
             PhotonNetwork.MinimalTimeScaleToDispatchInFixedUpdate = 0;
             PhotonNetwork.UseRpcMonoBehaviourCache = true;
+            DiscordManager.Init();
             ApplicationConfig.Init();
             AnticheatManager.Init();
             ChatFilter.Init();
@@ -88,7 +89,6 @@ namespace ApplicationManagers
             EventManager.InvokeFinishInit();
             if (ApplicationConfig.DevelopmentMode)
                 DebugTesting.RunLateTests();
-            DiscordManager.Init();
         }
     }
 }
